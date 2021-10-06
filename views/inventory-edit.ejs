@@ -1,0 +1,59 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12 ">
+            <div class="card p-2 shadow-sm border-bottom-primary">
+                <div class="card-body">
+                    <form method="POST" action="/inventory?_method=PUT">
+                        <div class="row">
+                            <div class="col">
+
+                                <label class="text-primary">Kode Material</label>
+                                <br>
+                        <input type="hidden" name="_id" value="<%= inventory._id %>">
+                        <!-- <input type="hidden" name="_id" value="<%= inventory.history %>"> -->
+                        <input type="hidden" name="kode_material" value="<%= inventory.kode_material %>">
+                                    <label class="text-primary"  value=""><%= inventory.kode_material%></label>
+                                    <br>
+                                        <label class="text-primary">Material</label>
+                                        <br>
+                                            <input type="text" class="form-control" placeholder="Nama Material" name="nama_material" value="<%= inventory.nama_material%> ">
+
+                                                <label class="text-primary">Qty Material</label>
+                                                <br>
+                                                    <input type="number" class="form-control" placeholder="Qty Material"  name="qty_stock" value="<%= inventory.qty_stock%>">
+                                                        <label class="text-primary">Unit</label>
+                                                        <br>
+                                                            <input type="text" class="form-control" placeholder="unit"    name="unit" value="<%= inventory.unit%>"></div>
+                                                        </div>
+                                                    <br>
+
+                                                        <div class="table-responsive">
+                                                            <table class="table">
+                                                                <thead class="text-primary">
+                                                                    <th>History</th>
+                                                                </thead>
+                                                                <tbody>
+                                                                      <% inventory.history.forEach(inventory => { %>
+                                                                        <tr>
+                                                                            <td><%= inventory %> </td>
+                                                                            
+                                                                          </tr>
+                                                                    
+                    <% }) %>
+                                                            </tbody>
+                                                        </table>
+                                                        <div class="col-md-3 pull pull-rigdt">
+                                                            <button type="submit"  class="btn btn-primary">Edit</button>
+                                                            <button type="button" class="btn btn-link">Cancel</button>
+                                                        </div>
+
+                                                    </div>
+                                                </form>
+                                                  </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                </div>

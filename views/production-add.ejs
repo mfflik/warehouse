@@ -1,0 +1,107 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <p class="h3">Add new production order.</p>
+            <div class="card p-2 shadow-sm border-bottom-primary">
+                <div class="table-responsive p-6">
+                    
+                    <div class="card-body">
+                    <form method="POST" action="/production">
+                            <div class="row">
+                              <div class="col">
+                                <label class="text-primary">No Production Order</label>
+                                <br>
+                                <input type="text" class="form-control" placeholder="No Production Order" name="no_po" >
+                                <label class="text-primary">Kode Produk</label>
+                                <br>
+                                <input type="text" class="form-control" id="kode_produk" placeholder="Kode Produk" name="kode_produk" >
+                                <label class="text-primary">Nama Produk</label>
+                                <br>
+                                <input type="text" class="form-control" id="nama_produk" placeholder="Nama Produk" name="nama_produk" readonly >
+                                <label class="text-primary">QTY PO</label>
+                                <br>
+                                <input type="text" class="form-control" id="qty_po" placeholder="QTY Produk" name="qty_po" >
+                                <!-- <label class="text-primary">Status PO</label>
+                                <br>
+                                <input type="text" class="form-control" placeholder="Kode Produk" name="status_po" > -->
+                                <div class="form-group">
+                                    <label class="text-primary" for="status_po">Status PO</label>
+                                    <select class="form-control" id="status_po" name="status_po">
+                                      <option>SAP</option>
+                                      <option>MANUAL</option>
+                                      <option>PENGGANTI PO MANUAL</option>
+                                    </select>
+                                  </div>
+                                <button type="button" rel="tooltip"  id="add_bom2" class="btn btn-primary">add bom
+                                    <i class="material-icons" id="add_bom2" >add</i>
+                                </button>
+                              </div>
+                              <div class="col">
+                                
+                                <label class="text-primary">No Production Order</label>
+                                <br>
+                                <input type="date" class="form-control" placeholder="Tanggal PO" name="tgl_po">
+                            to
+                                <input type="date" class="form-control" placeholder="Tanggal PO" name="tgl_po2">
+                               
+                                <label class="text-primary">No GI</label>
+                                <br>
+                                <input type="text" class="form-control" placeholder="NO GI" name="no_gi">
+
+                                <label class="text-primary">No GR</label>
+                                <br>
+                                <input type="text" class="form-control" placeholder="NO GR" name="no_gr">
+
+                                <label class="text-primary">No TFP</label>
+                                <br>
+                                <input type="text" class="form-control" placeholder="NO TFP" name="no_tfp">
+
+                                <label class="text-primary">Keterangan</label>
+                                <br>
+                                <textarea class="form-control" placeholder="Keterangan" name="keterangan"></textarea>
+                              </div>
+                            </div>  
+                    
+                      
+                    <br>
+                    <table class="table">
+                        <thead class=" text-primary">
+                            <tr>
+                            <th>Kode Material</th>
+                            <th>Nama Material</th>
+                            <th>QTY BoM</th>
+                            <th>QTY BoM * QTY UNIT</th>
+                            <th>QTY Order</th>
+                            <th>Unit</th>
+                            <!-- <th class="td-actions"> <button type="button" id="add_pur" rel="tooltip"
+                                class="btn btn-success">
+                                <i class="material-icons" id="add_pur" >add</i>
+                            </button>
+                            <button type="button" rel="tooltip"  id="del_pur" class="btn btn-danger">
+                                <i class="material-icons" id="del_pur" >close</i>
+                            </button></th> -->
+                            </tr>
+                        </thead>
+                            <tbody id="mat-get">
+                                <!-- <tr id="get-bom">
+                                    <td><input type="text" class="form-control" placeholder="Kode Material" name="kode_material0" readonly>
+                                    </td>
+                                    <td> <input type="number" class="form-control" placeholder="QTY BoM" name="qty_bom0" readonly>
+                                    </td>
+                                    <td> <input type="number" class="form-control" placeholder="QTY BoM x Unit" name="qty_all0" readonly>
+                                    </td>
+                                    <td> <input type="number" class="form-control" placeholder="QTY Order" name="qty_order0">
+                                    </td>
+                                </tr> -->
+                        </tbody>
+                    </table>
+                    <div class="col-md-3 pull pull-right"> <button type="Submit"
+                            class="btn btn-primary">Submit</button>
+                        <button type="button" class="btn btn-link">Cancel</button>
+                    </div>
+
+            </form>
+            </div>
+        </div>
+    </div>
+</div>

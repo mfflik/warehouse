@@ -1,0 +1,77 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <p class="h3">Add new purchase order.</p>
+            <div class="card p-2 shadow-sm border-bottom-primary">
+                <div class="table-responsive p-6">
+                    
+                    <div class="card-body">
+                    <form method="POST" action="/purchase">
+                            <div class="row">
+                              <div class="col">
+                                <label class="text-primary">No Purchase Order</label>
+                                <br>
+                                <input type="text" class="form-control" placeholder="No Purchase Order" name="no_po" >
+                                <label class="text-primary">Material Document</label>
+                                <br>
+                                <input type="text" class="form-control" placeholder="Material Document" name="mat_doc" >
+
+                              </div>
+                              <div class="col">
+                                
+                                <label class="text-primary">Tanggal Purchase Order</label>
+                                <br>
+                                <input type="date" class="form-control" placeholder="Tanggal PO" name="tgl_po">
+                               
+                                <label class="text-primary">Tanggal GR</label>
+                                <br>
+                                <input type="date" class="form-control" placeholder="Tanggal GR" name="tgl_gr">
+
+                                <label class="text-primary">Keterangan</label>
+                                <br>
+                                <textarea class="form-control" placeholder="Keterangan" name="keterangan"></textarea>
+                              </div>
+                            </div>
+                    
+                      
+                    <br>
+                    <table class="table">
+                        <thead class=" text-primary">
+                            <tr>
+                            <th>Kode Material</th>
+                            <!-- <th>Nama Material</th> -->
+                            <th>QTY Order</th>
+                            <!-- <th>Unit</th> -->
+                            <th class="td-actions"> <button type="button" id="add_pur" rel="tooltip"
+                                class="btn btn-success">
+                                <i class="material-icons" id="add_pur" >add</i>
+                            </button>
+                            <button type="button" rel="tooltip"  id="del_pur" class="btn btn-danger">
+                                <i class="material-icons" id="del_pur" >close</i>
+                            </button></th>
+                            </tr>
+                        </thead>
+                            <tbody id="mat-pur">
+                                <tr id="form-pur1">
+                                <td><input type="text" class="form-control" placeholder="Kode Material" name="kode_material0">
+                                </td>
+                                <!-- <td><input type="text" class="form-control" placeholder="Nama Material" name="nama_material0">
+                                </td> -->
+                                <td> <input type="number" class="form-control" placeholder="QTY Order" name="qty_order0">
+                                </td>
+                                <!-- <td><input type="text" class="form-control" placeholder="Unit" name="unit0"></td>
+                                </td> -->
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="col-md-3 pull pull-right"> <button type="Submit"
+                            class="btn btn-primary">Submit</button>
+                        <button type="button" class="btn btn-link">Cancel</button>
+                    </div>
+
+                </form>
+                </div>
+             
+        </div>
+    </div>
+</div>

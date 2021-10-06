@@ -1,0 +1,67 @@
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12 ">
+        <a class="btn btn-primary" href="/purchase/add">Add new Purchase Order</a>
+        <!-- <a href="#" class="btn btn-primary"> <i class="material-icons">print</i></a> -->
+        <div class="card p-2 shadow-sm border-bottom-primary">
+          
+          <div class="card-body">
+            <div class="table-responsive">
+              <table id="example" class="table">
+                <thead class="text-primary">
+                  <tr>
+                    <th>#</th>
+                  <th>No. Purchase</th>
+                  <th>Material Document</th>
+                  <th>Tanggal PO</th>
+                  <th>Tanggal GR</th>
+                  <th>Item</th>
+                  <th>Keterangan</th>
+                  <th>Action</th>
+                </tr>
+                </thead>
+                <tbody>   
+                   <tr>
+                <% if (purchase===0) { %>
+                    <tr>
+                        <td colspan="4">
+                            <div class="alert alert-danger fw-bold" role="alert">
+                                Data purchase masih kosong.
+                            </div>
+                        </td>
+                    </tr>  <% } %>
+                <% purchase.forEach(purchase => { %>
+              
+                    <td></td>
+                    <td><%= purchase.no_purchase %></td>
+                    <td><%= purchase.mat_doc %></td>
+                    <td class="text-primary"><%= purchase.tgl_po.getDate() %>/<%= purchase.tgl_po.getMonth() %>/<%= purchase.tgl_po.getFullYear() %></td>
+                    <td class="text-primary"> <% if ( purchase.tgl_gr!=null) { %>
+                      <%= purchase.tgl_gr.getDate() %>/<%= purchase.tgl_gr.getMonth() %>/<%= purchase.tgl_gr.getFullYear()%> </td>
+                    <% } %>
+                      
+                    <td><%= purchase.material.length %></td>
+                    <td class="text-warning"><%= purchase.keterangan%></td>
+                    <td class="td-actions">
+                      <button type="button" rel="tooltip" class="btn btn-success">
+                        <i class="material-icons">edit</i>
+                      </button>
+                      <form action="/purchase?_method=DELETE" class="d-inline" method="POST">
+                        <input type="hidden" name="no_purchase" value="<%=purchase.no_purchase%>">
+                            <button type="submit" class="btn btn-danger badge" onclick="return confirm('yakin?');">
+                                <i class="material-icons">close</i>
+                            </button>
+                            
+                        </form>
+                    </td>
+                  </tr>
+                  
+                  <% }) %>
+                </tbody>
+              </table>
+             
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>

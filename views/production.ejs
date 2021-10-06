@@ -1,0 +1,60 @@
+<div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12 ">
+        <a class="btn btn-primary" href="/production/add">Add new Production Order</a>
+        <!-- <a href="#" class="btn btn-primary"> <i class="material-icons">print</i></a> -->
+        <div class="card p-2 shadow-sm border-bottom-primary">
+          
+          <div class="card-body">
+            <div class="table-responsive">
+              <table id="example" class="table">
+                <thead class="text-primary">
+                  <tr>
+                    <th>#</th>
+                  <th>No. PO</th>
+                  <th>Tanggal PO</th>
+                  <th>Deskripsi</th>
+                  <th>Qty</th>
+                  <th>GI</th>
+                  <th>GR</th>
+                  <th>TP</th>
+                  <th>Keterangan</th>
+                  <th>Action</th>
+                </tr>
+                </thead>
+                <tbody>   
+                   <tr>
+                <% production.forEach(production => { %>
+              
+                    <td></td>
+                    <td><%= production.no_prod %></td>
+                    <td><%= production.tgl_po.getDate() %>/<%= production.tgl_po.getMonth() %>/<%= production.tgl_po.getFullYear() %> - <%= production.tgl_po2.getDate() %>/<%= production.tgl_po2.getMonth() %>/<%= production.tgl_po2.getFullYear() %> </td>
+                    <td><%= production.nama_produk %></td>
+                    <td><%= production.qty_po %></td>
+                    <td><%= production.no_gi %></td>
+                    <td><%= production.no_gr %></td>
+                    <td><%= production.no_tfp %></td>
+                    <td><%= production.keterangan %></td>
+                    <td class="td-actions">
+                      <button type="button" rel="tooltip" class="btn btn-success">
+                        <i class="material-icons">edit</i>
+                      </button>
+                      <form action="/production?_method=DELETE" class="d-inline" method="POST">
+                        <input type="hidden" name="no_prod" value="<%=production.no_prod%>">
+                            <button type="submit" class="btn btn-danger badge" onclick="return confirm('yakin?');">
+                                <i class="material-icons">close</i>
+                            </button>
+                            
+                        </form>
+                    </td>
+                  </tr>
+                  
+                  <% }) %>
+                </tbody>
+              </table>
+             
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>

@@ -1,0 +1,71 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <p class="h3">Add new product.</p>
+            <div class="card p-2 shadow-sm border-bottom-primary">
+                <form method="POST" action="/product">
+                    <div class="table-responsive p-6">
+
+                        <div class="card-body">
+                                <div class="row">
+                                    <div class="col">
+
+                                        <label class="text-primary">Kode Produk</label>
+                                        <br>
+                                            <input type="text" class="form-control" placeholder="Kode Produk" name="kode_produk">
+
+                                                <label class="text-primary">Nama Produk</label>
+                                                <br>
+                                                    <input type="text" class="form-control" placeholder="Nama Produk" name="nama_produk">        
+                                                    <br>
+                                                                 <label class="text-primary">Keterangan
+                                                    </label>
+                                                    <br>
+                                                        <textarea class="form-control" placeholder="Keterangan" name="keterangan"></textarea></div>
+                                                   </div>
+
+                                                <br>
+                                                    <table class="table">
+                                                        <thead class=" text-primary">
+                                                            <tr>
+                                                                <th>Kode Material</th>
+                                                                <!-- <th>Nama Material</th> -->
+                                                                <th>QTY BoM</th>
+                                                                <!-- <th>Unit</th> -->
+                                                                <th class="td-actions">
+                                                                    <button type="button" id="add_bom" rel="tooltip" class="btn btn-success">
+                                                                        <i class="material-icons">add</i>
+                                                                    </button>
+
+                                                                    <button type="button" rel="tooltip" id="del_bom" class="btn btn-danger">
+                                                                        <i class="material-icons">close</i>
+                                                                    </button>
+                                                                </th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody id="bom">
+                                                            <tr id="formbom1">
+                                                                <td>
+                                                                    <input type="text" class="form-control" placeholder="Kode Material" name="kode_material0"></td>
+                                                                    <!-- <td>
+                                                                        <input type="text" class="form-control" placeholder="Nama Material" name="nama_material0"></td> -->
+                                                                        <td>
+                                                                            <input type="number" class="form-control" placeholder="QTY BoM" name="qty0"></td>
+                                                                            <!-- <td>
+                                                                                <input type="text" class="form-control" placeholder="Unit" name="unit0"></td> -->
+                                                                            </tr>
+                                                                        </tbody>
+                                                                    </table>
+                                                                    <div class="col-md-3 pull pull-right">
+                                                                        <button type="submit" class="btn btn-primary">Submit</button>
+                                                                        <button type="button" class="btn btn-link">Cancel</button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>

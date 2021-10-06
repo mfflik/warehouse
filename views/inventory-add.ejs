@@ -1,0 +1,51 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <p class="h3">Add new stocks.</p>
+            <div class="card p-2 shadow-sm border-bottom-primary">
+                <form method="POST" action="/inventory">
+                <div class="table-responsive">
+                    
+                    <div class="card-body">
+                    <table class="table">
+                        <thead class=" text-primary">
+                           <tr>
+                            <th>Kode Material</th>
+                            <th>Material</th>
+                            <th>QTY</th>
+                            <th>Unit</th>
+                            <th class="td-actions"> <button type="button" id="add_btn" rel="tooltip"
+                                    class="btn btn-success">
+                                    <i class="material-icons" id="add_btn" >add</i>
+                                </button>
+                                <button type="button" rel="tooltip"  id="del" class="btn btn-danger">
+                                    <i class="material-icons" id="del" >close</i>
+                                </button></th>
+                            </tr>
+                        </thead>
+                        <tbody id="p">
+                            <tr id="form1">
+                                <td><input type="text" class="form-control" placeholder="Kode Material" name="kode-material0">
+                                </td>
+                                <td><input type="text" class="form-control" placeholder="Nama Material" name="nama-material0">
+                                </td>
+                                <td> <input type="number" class="form-control" placeholder="Quantity" value="0" name="qty-stock0">
+                                </td>
+                                <td><input type="text" class="form-control" placeholder="Unit" name="unit0"></td>
+                                <td >
+                                
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                        <div class="col-md-3 pull pull-right">  <button type="submit" class="btn btn-primary">Submit</button>
+                            <button type="button" class="btn btn-link">Cancel</button></div>
+                  
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
