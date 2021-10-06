@@ -1,6 +1,9 @@
 const express = require("express");
 const expressLayouts = require("express-ejs-layouts");
+const session = require("express-session");
 const methodOverride = require("method-override");
+const flash = require("connect-flash");
+const cookieParser = require("cookie-parser");
 
 require("./utils/db");
 const Inventory = require("./model/inventory");
@@ -17,6 +20,17 @@ app.use(expressLayouts); //third party mw
 app.use(express.static("public")); // Build-in midleware
 app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride("_method"));
+// Konfig Flash
+app.use(cookieParser("secret"));
+app.use(
+  session({
+    cookie: { maxAge: 6000 },
+    secret: "secret",
+    resave: true,
+    saveUninitialized: true,
+  })
+);
+app.use(flash());
 
 app.get("/", (req, res) => {
   res.render("index", {
@@ -30,6 +44,7 @@ app.get("/", (req, res) => {
       product: "nav-item",
     },
     layout: "layouts/main-layout",
+    
   });
 });
 
@@ -48,6 +63,7 @@ app.get("/inventory", async (req, res) => {
     },
     layout: "layouts/main-layout",
     inventory,
+    msg: req.flash("msg"),
   });
 });
 
@@ -63,10 +79,12 @@ app.get("/inventory/add", (req, res) => {
       product: "nav-item",
     },
     layout: "layouts/main-layout",
+    msg: req.flash("msg"),
   });
 });
 
-app.post("/inventory", (req, res) => {
+app.post("/inventory", async (req, res) => {
+  
   let i = 0;
   let jumlah;
   let date = new Date();
@@ -78,8 +96,16 @@ app.post("/inventory", (req, res) => {
   jumlah = i;
 
   console.log(jumlah);
-  for (let j = 0; j < jumlah; j++) {
+  for (let j = 0; j < jumlah; j++) {  
+    try { const inventory = await Inventory.findOne({ kode_material: req.body[`kode-material` + j] });
+    if (inventory.kode_material!=req.body[`kode-material` + j]){}
+  
+  }catch (e) {
+    console.log(inventory);
+    console.log(req.body[`kode-material` + j]);
+  // if (inventory.kode_material!=req.body[`kode-material` + j]||inventory==undefined){
     try {
+
       Inventory.insertMany({
         kode_material: req.body[`kode-material` + j],
         nama_material: req.body[`nama-material` + j],
@@ -90,11 +116,15 @@ app.post("/inventory", (req, res) => {
         }`,
       });
     } catch (e) {
-      console.log(e);
-    }
-  }
-
+  req.flash("msg", e);
   res.redirect("/inventory");
+    }
+    req.flash("msg", "Data Inventory berhasil ditambahkan");}
+    
+  // }
+console.log("ada disini")
+  res.redirect("/inventory");
+}
 });
 
 //proses ubah data
@@ -497,6 +527,21 @@ app.delete("/product", (req, res) => {
     res.redirect("/product");
   });
 });
+
+app.get('/dataserver', (req, res) => {
+  // res.statusCode=200;
+  // res.sendStatus(200);
+   res.send({nama:"Hello Worlda!@"})
+});
+
+
+app.post('/digitalupload', (req, res) => {
+  // res.statusCode=200;
+  // res.sendStatus(200);
+   res.send({nama:"Hello Worlda!@"})
+});
+
+
 app.listen(port, () => {
   console.log(`Warehouse System | listening at http://localhost:${port}`);
 });
