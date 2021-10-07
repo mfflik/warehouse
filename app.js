@@ -1,6 +1,6 @@
 const express = require("express");
 const expressLayouts = require("express-ejs-layouts");
-const session = require("express-session");
+var session = require('cookie-session');
 const methodOverride = require("method-override");
 const flash = require("connect-flash");
 const cookieParser = require("cookie-parser");
@@ -12,7 +12,7 @@ const Purchase = require("./model/purchase");
 const Production = require("./model/production");
 
 const app = express();
-const port = 3000;
+const port = 8080;
 
 // Setup Ejs
 app.set("view engine", "ejs");
