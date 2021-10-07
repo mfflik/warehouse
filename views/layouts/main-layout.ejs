@@ -403,7 +403,7 @@ The above copyright notice and this permission notice shall be included in all c
             response.material.forEach(material=>{
               $("#mat-get").append(`<tr id="get-bom">
                                     <td><input type="text" class="form-control" placeholder="Kode Material" name="kode_material${[count]}" value="${material.kode_material_bom}" readonly>
-                                    </td> <td><input type="text" class="form-control" placeholder="Nama Material" name="nama_material${[count]}" value="${material.nama_material}" readonly>
+                                    </td> <td><input type="text" class="form-control" placeholder="Nama Material" name="nama_material${[count]}" value="${material.nama_material_bom}" readonly>
                                     </td>
                                     <td> <input type="number" class="form-control" placeholder="QTY BoM" name="qty_bom${[count]}" value="${material.qty_bom}"  readonly>
                                     </td>
@@ -411,7 +411,7 @@ The above copyright notice and this permission notice shall be included in all c
                                     </td>
                                     <td> <input type="number" class="form-control" placeholder="QTY Order" name="qty_order${[count]}">
                                     </td>
-                                    <td> <input type="text" class="form-control" placeholder="QTY BoM x Unit" name="qty_all${[count]}" value="${material.unit}"  readonly>
+                                    <td> <input type="text" class="form-control" placeholder="QTY BoM x Unit" name="qty_all${[count]}" value="${material.unit_bom}"  readonly>
                                     </td>
                                 </tr>`);
                                 count++;});

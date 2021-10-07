@@ -97,15 +97,13 @@ app.post("/inventory", async (req, res) => {
 
   console.log(jumlah);
   for (let j = 0; j < jumlah; j++) {  
-    try { const inventory = await Inventory.findOne({ kode_material: req.body[`kode-material` + j] });
-    if (inventory.kode_material!=req.body[`kode-material` + j]){}
+    // try { const inventory = await Inventory.findOne({ kode_material: req.body[`kode-material` + j] });
+    // if (inventory.kode_material!=req.body[`kode-material` + j]){}
   
-  }catch (e) {
-    console.log(inventory);
+  // }catch (e) {
     console.log(req.body[`kode-material` + j]);
   // if (inventory.kode_material!=req.body[`kode-material` + j]||inventory==undefined){
     try {
-
       Inventory.insertMany({
         kode_material: req.body[`kode-material` + j],
         nama_material: req.body[`nama-material` + j],
@@ -116,15 +114,14 @@ app.post("/inventory", async (req, res) => {
         }`,
       });
     } catch (e) {
+      // console.log(e)
   req.flash("msg", e);
-  res.redirect("/inventory");
+  // res.redirect("/inventory");
     }
-    req.flash("msg", "Data Inventory berhasil ditambahkan");}
-    
-  // }
-console.log("ada disini")
-  res.redirect("/inventory");
 }
+req.flash("msg", "Data Inventory berhasil ditambahkan");
+  // }
+  res.redirect("/inventory");
 });
 
 //proses ubah data
@@ -452,7 +449,7 @@ app.post("/product", (req, res) => {
   let i = 0;
   let material = [];
 
-  // let material2 = [];
+  let material2 = [];
   console.log(req.body);
   do {
     material.push({
@@ -471,14 +468,14 @@ app.post("/product", (req, res) => {
     a.nama_material = item.nama_material;
     a.unit = item.unit;
     let jumlah = material.length - 1;
-    // console.log(material.length - 1);
-    // console.log(index);
-    // material2.push({
-    //   kode_material_bom: a.kode_material_bom,
-    //   nama_material_bom: item.nama_material,
-    //   qty_bom: a.qty_bom,
-    //   unit_bom: item.unit,
-    // });
+    console.log(material.length - 1);
+    console.log(index);
+    material2.push({
+      kode_material_bom: a.kode_material_bom,
+      nama_material_bom: item.nama_material,
+      qty_bom: a.qty_bom,
+      unit_bom: item.unit,
+    });
     if (index == jumlah) {
       console.log(material);
       try {
@@ -486,7 +483,7 @@ app.post("/product", (req, res) => {
           kode_produk: req.body[`kode_produk`],
           nama_produk: req.body[`nama_produk`],
           keterangan: req.body[`keterangan`],
-          material,
+          material:material2,
         });
       } catch (e) {
         console.log(e);
