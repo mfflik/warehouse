@@ -12,7 +12,7 @@ const Purchase = require("./model/purchase");
 const Production = require("./model/production");
 
 const app = express();
-const port = 8080;
+const port = process.env.PORT || 3000;
 
 // Setup Ejs
 app.set("view engine", "ejs");
