@@ -42,7 +42,7 @@ app.get("/datamobile/inventory",async (req, res) => {
 }
 });
 
-app.get("/datamobile/inventory:kode_material", async(req, res) => {
+app.get("/datamobile/inventory/:kode_material", async(req, res) => {
   try {
     const inventory = await Inventory.findById(req.params.kode_material);
     res.json(inventory);
