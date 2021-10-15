@@ -44,7 +44,7 @@ app.get("/datamobile/inventory",async (req, res) => {
 
 app.get("/datamobile/inventory/:kode_material", async(req, res) => {
   try {
-    const inventory = await Inventory.findById(req.params.kode_material);
+    const inventory = await Inventory.findOne({kode_material:req.params.kode_material}) ;
     res.json(inventory);
 } catch (error) {
     res.status(404).json({message: error.message});
