@@ -5,12 +5,13 @@ const methodOverride = require("method-override");
 const flash = require("connect-flash");
 const cookieParser = require("cookie-parser");
 
+
 require("./utils/db");
 const Inventory = require("./model/inventory");
 const Product = require("./model/product");
 const Purchase = require("./model/purchase");
 const Production = require("./model/production");
-
+//import cors
 const app = express();
 const port = process.env.PORT || 3000;
 
@@ -31,6 +32,25 @@ app.use(
   })
 );
 app.use(flash());
+
+app.get("/datamobile/inventory",async (req, res) => {
+  try {
+    const inventory = await Inventory.find();
+    res.json(inventory);
+} catch (error) {
+    res.status(500).json({message: error.message});
+}
+});
+
+app.get("/datamobile/inventory:kode_material", async(req, res) => {
+  try {
+    const inventory = await Inventory.findById(req.params.kode_material);
+    res.json(inventory);
+} catch (error) {
+    res.status(404).json({message: error.message});
+}
+});
+
 
 app.get("/", (req, res) => {
   res.render("index", {
