@@ -130,7 +130,7 @@ app.post("/inventory", async (req, res) => {
         qty_stock: req.body[`qty-stock` + j],
         unit: req.body[`unit` + j],
         location:"floor",
-        url:"",
+        url:"https://ileaa.herokuapp.com/a.png",
         history: {
           tanggal: tgl,
           masuk: req.body[`qty-stock` + j],
