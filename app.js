@@ -129,9 +129,16 @@ app.post("/inventory", async (req, res) => {
         nama_material: req.body[`nama-material` + j],
         qty_stock: req.body[`qty-stock` + j],
         unit: req.body[`unit` + j],
-        history: `${tgl} , Input ${req.body[`qty-stock` + j]}  ${
-          req.body["unit" + j]
-        }`,
+        location:"floor",
+        url:"",
+        history: {
+          tanggal: tgl,
+          masuk: req.body[`qty-stock` + j],
+          keluar:"",
+          saldo: req.body[`qty-stock` + j],
+          user:"Yogas",
+          keterangan:"New Input",
+        },
       });
     } catch (e) {
       // console.log(e)

@@ -16,6 +16,12 @@ const Inventory = mongoose.model('Inventory', {
     unit: {
         type: String,
         required: true,
+    },  location: {
+        type: String,
+        required: true,
+    },  url: {
+        type: String,
+        required: true,
     }, 
      history: {
         type: Array,
