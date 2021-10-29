@@ -176,7 +176,13 @@ app.put(
     const tgl = `${date.getDate()}/${date.getMonth()}/${date.getFullYear()}`;
 
     var history = duplikat.history;
-    history.push(`${tgl} , Edit ${req.body.qty_stock} ${req.body.unit}`);
+    history.push({
+      tanggal: tgl,
+      masuk: "",
+      keluar:"",
+      saldo: req.body.qty_stock,
+      user:"Yogas",
+      keterangan:"Edited Data",});
     Inventory.updateOne(
       { _id: req.body._id },
       {
