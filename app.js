@@ -11,6 +11,8 @@ const Inventory = require("./model/inventory");
 const Product = require("./model/product");
 const Purchase = require("./model/purchase");
 const Production = require("./model/production");
+
+const post = require("./controllers/post");
 //import cors
 const app = express();
 const port = process.env.PORT || 3000;
@@ -33,6 +35,7 @@ app.use(
 );
 app.use(flash());
 
+app.use(express.json()); //parses incoming requests as JSON
 app.get("/datamobile/inventory",async (req, res) => {
   try {
     const inventory = await Inventory.find();
@@ -50,6 +53,31 @@ app.get("/datamobile/inventory/:kode_material", async(req, res) => {
     res.status(404).json({message: error.message});
 }
 });
+
+app.post(
+  "/datamobile/inventory",
+  post.uploadImg,
+  post.newInventory
+);
+
+app.get("/datamobile/bom",async (req, res) => {
+  try {
+    const product = await Product.find();
+    res.json(product);
+} catch (error) {
+    res.status(500).json({message: error.message});
+}
+});
+
+app.get("/datamobile/bom/:kode_produk", async(req, res) => {
+  try {
+    const produk = await Product.findOne({ kode_produk: req.params.kode_produk });
+    res.json(produk);
+} catch (error) {
+    res.status(404).json({message: error.message});
+}
+});
+
 
 
 app.get("/", (req, res) => {
