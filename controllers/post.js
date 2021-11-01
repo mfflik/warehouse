@@ -27,7 +27,7 @@ const storage = multer.diskStorage({
           qty_stock: req.body.qty_stock,
           unit: req.body.unit,
           location: req.body.location,
-          url:`https://ileaa.herokuapp.com/${req.body.kode_material}.jpg`,
+          url:`https://ileaa.herokuapp.com/image/${req.body.kode_material}.jpg`,
           history: {
             tanggal: tgl,
             masuk: req.body.qty_stock,
