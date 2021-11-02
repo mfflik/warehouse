@@ -8,7 +8,9 @@ const Inventory = mongoose.model('Inventory', {
     nama_material: {
         type: String,
         required: true,
-    },
+    },dekripsi: {
+        type: String,
+    }, 
     qty_stock: {
         type: String,
         required: true,
@@ -22,7 +24,7 @@ const Inventory = mongoose.model('Inventory', {
     },  url: {
         type: String,
         required: true,
-    }, 
+    },  
      history: {
         type: Array,
     }
