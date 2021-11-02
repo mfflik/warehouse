@@ -8,7 +8,7 @@ const Inventory = mongoose.model('Inventory', {
     nama_material: {
         type: String,
         required: true,
-    },dekripsi: {
+    },deskripsi: {
         type: String,
     }, 
     qty_stock: {
